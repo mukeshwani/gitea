@@ -2,16 +2,18 @@ version: "3"
 
 services:
   server:
-    image: gitea/gitea:latest
+    image: gitea/gitea:1.20.5
     container_name: gitea
     environment:
       - USER_UID=1000
       - USER_GID=1000
+      - GITEA__server__SSH_DOMAIN=192.168.1.140
+      - GITEA__server__SSH_PORT=2222
     restart: always
     volumes:
-      - /portainer/Files/AppData/gitea/container-data/data:/data:Z
-      - /etc/timezone:/etc/timezone
-      - /etc/localtime:/etc/localtime
+      - /portainer/AppData/gitea/container-data/data:/data:Z
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     ports:
       - "3000:3000"
       - "2222:22"
