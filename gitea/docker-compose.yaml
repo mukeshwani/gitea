@@ -14,3 +14,4 @@ services:
       - /etc/localtime:/etc/localtime
     ports:
       - "3000:3000"
+      - "2222:22"
